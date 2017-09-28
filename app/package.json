@@ -2,7 +2,7 @@
   "name": "electroweb",
   "productName": "Electroweb",
   "version": "0.1.0",
-  "description": "An app that lets you control your Philips Hue lamps and bind the color to your PCs live hardware data",
+  "description": "An app that lets you control your Philips Hue lamps and bind their color to your PCs live hardware data",
   "main": "./main.prod.js",
   "author": {
     "name": "Sebastian Kasanzew",
