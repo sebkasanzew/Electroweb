@@ -10,7 +10,11 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import {
+  app,
+  BrowserWindow
+} from 'electron';
+import windowStateKeeper from 'electron-window-state';
 import MenuBuilder from './menu';
 
 let mainWindow = null;
@@ -59,13 +63,41 @@ app.on('ready', async () => {
     await installExtensions();
   }
 
-  mainWindow = new BrowserWindow({
-    show: false,
-    width: 1024,
-    height: 728
+  // Load the previous state with fallback to defaults
+  const mainWindowState = windowStateKeeper({
+    defaultWidth: 1000,
+    defaultHeight: 800,
   });
 
+  const loadingWindow = new BrowserWindow({
+    width: 300,
+    height: 200,
+    show: false,
+    frame: false,
+  });
+
+  mainWindow = new BrowserWindow({
+    show: false,
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height
+  });
+
+  // Let us register listeners on the window, so we can update the state
+  // automatically (the listeners will be removed when the window is closed)
+  // and restore the maximized or full screen state
+  mainWindowState.manage(mainWindow);
+
+  loadingWindow.loadURL(`file://${__dirname}/loading.html`);
   mainWindow.loadURL(`file://${__dirname}/app.html`);
+
+  loadingWindow.webContents.on('did-finish-load', () => {
+    if (!loadingWindow) {
+      throw new Error('"loadingWIndow" is not defined');
+    }
+    loadingWindow.show();
+  });
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
@@ -73,6 +105,8 @@ app.on('ready', async () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
     }
+    loadingWindow.hide();
+    loadingWindow.close();
     mainWindow.show();
     mainWindow.focus();
   });
