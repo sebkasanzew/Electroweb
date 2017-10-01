@@ -10,10 +10,7 @@
  *
  * @flow
  */
-import {
-  app,
-  BrowserWindow
-} from 'electron';
+import { app, BrowserWindow } from 'electron';
 import windowStateKeeper from 'electron-window-state';
 import MenuBuilder from './menu';
 
