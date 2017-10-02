@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
 import AccessAlarmIcon from 'material-ui-icons/AccessAlarm';
@@ -8,7 +10,7 @@ export default class Home extends Component {
     return (
       <div>
         <div className={styles.container} data-tid="container">
-          <Button><AccessAlarmIcon /> Test</Button>
+          <Button raised><AccessAlarmIcon style={{ marginRight: '10pt' }} />Test</Button>
         </div>
       </div>
     );

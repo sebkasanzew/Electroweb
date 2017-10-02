@@ -7,6 +7,11 @@ body {
   background-color: #222222;
   font-family: "Roboto", Arial, Helvetica, "Helvetica Neue", serif;
   overflow-y: hidden;
+  margin: 0;
+}
+
+#root {
+  height: 100vh;
 }
 
 h2 {
