@@ -5,7 +5,11 @@ import Button from 'material-ui/Button';
 import AccessAlarmIcon from 'material-ui-icons/AccessAlarm';
 import styles from './Home.scss';
 
-export default class Home extends Component {
+type Props = {};
+
+export default class Home extends Component<Props> {
+  props: Props;
+
   render() {
     return (
       <div>
