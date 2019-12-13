@@ -135,7 +135,7 @@
     "babili-webpack-plugin": "0.1.2",
     "chalk": "2.0.1",
     "concurrently": "3.5.0",
-    "cross-env": "5.0.1",
+    "cross-env": "5.2.1",
     "cross-spawn": "5.1.0",
     "css-loader": "0.28.4",
     "electron": "^1.6.10",
