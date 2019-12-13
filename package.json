@@ -137,7 +137,7 @@
     "concurrently": "3.5.0",
     "cross-env": "5.0.1",
     "cross-spawn": "5.1.0",
-    "css-loader": "0.28.4",
+    "css-loader": "0.28.11",
     "electron": "^1.6.10",
     "electron-builder": "19.8.0",
     "electron-devtools-installer": "2.2.0",
